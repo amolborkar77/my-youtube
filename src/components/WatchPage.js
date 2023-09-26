@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { closeMenu } from "../utils/appSlice";
-import CommentsContainer from "./Comment/CommentsContainer";
+
+import { CommentsContainer } from "./Comment";
 import { LiveChat } from "./LiveChat";
 import { Video } from "./Video";
+import { closeMenu } from "../utils/appSlice";
 
 export const WatchPage = () => {
   const dispatch = useDispatch();

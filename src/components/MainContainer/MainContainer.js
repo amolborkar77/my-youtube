@@ -1,8 +1,9 @@
 import React from "react";
+
 import { VideoContainer } from "./VideoContainer";
 import { ButtonList } from "./Button";
 
-export const MainContainer = () => {
+const MainContainer = () => {
   return (
     <div className="col-span-11">
       <ButtonList />
@@ -10,3 +11,5 @@ export const MainContainer = () => {
     </div>
   );
 };
+
+export default MainContainer;

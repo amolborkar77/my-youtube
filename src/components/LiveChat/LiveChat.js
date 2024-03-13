@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChatMessage from "./ChatMessage";
-import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../../utils/chatSlice";
 import { generateRandomName, makeMessage } from "./utils";
+import { MSG_TITLE } from "../../utils/constants";
 
 const liveChatWrapper =
   "w-full h-[600px] ml-2 p-2 border border-black bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse";
@@ -27,7 +28,7 @@ const LiveChat = () => {
     return () => clearInterval(i);
   }, []);
 
-  const handleChat = () => {
+  const handleSendOnClick = () => {
     message &&
       dispatch(
         addMessage({
@@ -38,9 +39,14 @@ const LiveChat = () => {
     setMessage("");
   };
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    handleSendOnClick();
+  };
+
   return (
     <div className={liveChatWrapper}>
-      <div className="flex p-2">
+      <form className="flex p-2" onSubmit={handleOnSubmit}>
         <input
           className="w-full border border-black mr-2 rounded-lg"
           type="text"
@@ -51,13 +57,13 @@ const LiveChat = () => {
 
         <button
           className="bg-blue-500 px-2 rounded-lg cursor-pointer"
-          onClick={(e) => handleChat(e.target.value)}
+          onClick={handleSendOnClick}
         >
           Send
         </button>
-      </div>
+      </form>
 
-      <p className="p-2">Say something...</p>
+      <p className="p-2">{MSG_TITLE}</p>
 
       {
         //Disclaimer: don't use indexes as a key

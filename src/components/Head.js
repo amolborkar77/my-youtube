@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Suggestions } from "./Suggestions";
-import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { toggleMenu } from "../utils/appSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { HAMBURGER_ICON, USER_ICON, YOUTUBE_LOGO } from "./Constants";
 
 const Head = () => {
@@ -38,7 +38,6 @@ const Head = () => {
       clearTimeout(timer);
     };
   }, [searchQuery, dispatch, searchCache]);
-  console.log(showSuggestions);
 
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-lg">
